@@ -10,6 +10,11 @@ import { PostsService } from 'src/app/services/posts.service';
 export class MainListComponent implements OnInit {
   public title = 'List of Posts';
   public posts: Array<Post> = [];
+  public isNewPostVisible: boolean = false;
+
+  public descriptionValue: string = '';
+  public labelValue: string = '';
+
   //public postsAPI: Array<any> = [];
 
   // injects PostsService
@@ -21,11 +26,21 @@ export class MainListComponent implements OnInit {
       console.log('Get post response: ', resp);
       this.posts = resp;
     });
-    // complete posts
-    this.posts = [
-      { id: 1, title: 'testeo title' },
-      { id: 2, title: 'testeo title body' },
-      { id: 3, title: 'testeo body locoooo' },
-    ];
+  }
+
+  toggleShowPost() {
+    this.isNewPostVisible = !this.isNewPostVisible;
+  }
+
+  addPost() {
+    //InputDescription
+    //InputTitle
+
+    this.posts.push({
+      userId: 1,
+      id: this.posts.length + 1,
+      title: this.labelValue,
+      body: this.descriptionValue,
+    });
   }
 }
