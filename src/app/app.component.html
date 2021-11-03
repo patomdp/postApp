@@ -1,102 +1,24 @@
 <nav class="navbar sticky-top navbar-light bg-dark ">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center  " href="/home">
+    <a class="navbar-brand d-flex align-items-center " routerLink="/home" routerLinkActive="active">
       <img src="https://www.rindus.de/hubfs/raw_assets/public/RindusThemeV2/images/logo.png" alt="" width="30"
         height="30" class="d-inline-block me-2 align-text-top">
       <span class="h2 mb-0" style="color: white;">
         {{title}}
       </span>
     </a>
+    <a [routerLink]="['/posts',commentId]" routerLinkActive="active" class="btn btn-secondary">LINK A COMMENTS</a>
+    <input [(ngModel)]="commentId">
   </div>
 </nav>
 
+<div class="container mt-5">
 
-<app-posts-display></app-posts-display>
+
+</div>
+
 <!-- <app-main-list></app-main-list> -->
+<!-- <app-posts-display></app-posts-display>
+<app-old-list></app-old-list> -->
 
-<div class="container">
-
-  <div class="row">
-
-    <div class="card card-body mb-5">
-      <div class="card-title h5 mb-3 d-flex">
-        <p>
-          List of Posts
-        </p>
-        <div class="btn-group">
-          <button type="button" class="btn"> Add post</button>
-        </div>
-
-      </div>
-      <ul class="list-group">
-        <li *ngFor="let post of posts" class="list-group-item list-group-item-action">
-          <div class="ms-2">
-            <div class="card-title d-flex  justify-content-between" style="user-select: none;">
-              <p class="m-0 h5 align-self-center text-capitalize">{{post.name}}</p>
-              <div class="btn-group2 rounded-right">
-                <button class="btn btn-secondary rounded-left" type="button" aria-label="Edit">
-                  <i class="bi bi-pencil"></i></button>
-                <button class="btn btn-primary rounded-right " type="button" aria-label="Delete">
-                  <i class="bi bi-x-circle-fill">
-                  </i>
-                </button>
-              </div>
-            </div>
-            <hr class="mb-3 mt-1">
-            <div id="comment-input" class="comment-container d-flex justify-content-between" style="user-select: none;">
-              <p class="text-uppercase">
-                {{post.body}}
-              </p>
-              <div class="btn-group">
-                <button class="btn " aria-label="Edit"><i class="bi bi-pencil"></i></button>
-                <button class="btn " aria-label="Delete"><i class="bi bi-x-circle-fill"></i></button>
-              </div>
-            </div>
-            <hr class="mb-3 mt-3">
-            <div class="form-group">
-              <div class="input-group mb-3">
-                <input id="input-comment" type="text" class="form-control" placeholder="Your comment"
-                  aria-label="Your comment" aria-describedby="button-addon2">
-                <button class="btn btn-outline-primary" id="button-addon2" onclick="addComment(string)">
-                  Add new comment
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- <span class="badge bg-primary rounded-pill">3</span> -->
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-<div class="list-container d-flex">
-
-  <div class="container mb-5">
-    <div class="row">
-      <div class="card mt-1">
-        <div class="card-body">
-          <div class="card-title h5 mb-3">Insert a new comment</div>
-          <ul class="list-group mb-3">
-
-            <li *ngFor="let comment of commentArray" class="list-group-item list-group-item-action"
-              style="user-select: none;">
-              <div>{{comment.id}} - {{comment.body}}</div>
-
-            </li>
-          </ul>
-          <div class="form-group">
-
-            <div class="input-group mb-3">
-
-              <input type="text" [(ngModel)]="selectedComment.body" class="form-control" placeholder="Your comment">
-              <button (click)="addOrEdit()" class="btn btn-outline-primary">Add new comment</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>

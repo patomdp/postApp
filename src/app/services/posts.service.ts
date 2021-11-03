@@ -12,15 +12,15 @@ export class PostsService {
     console.log('Post Service successfully inyected');
   }
 
-  // metodo para traer desde el API rest
+  // get some posts, filtered
   public getPosts(): Observable<any> {
     let header = new HttpHeaders().set('Type-content', 'aplication/json');
-    return this.http.get(this._url + 'posts', { headers: header });
+    return this.http.get(this._url + 'posts?userId=1', { headers: header });
   }
-  // metodo para traer desde el API rest
+  // get nested comments, just an example
   public getComments(): Observable<any> {
     let header = new HttpHeaders().set('Type-content', 'aplication/json');
-    return this.http.get(this._url + 'comments/', { headers: header });
+    return this.http.get(this._url + 'posts/1/comments/', { headers: header });
   }
 }
 

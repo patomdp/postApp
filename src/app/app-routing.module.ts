@@ -1,9 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PostsDisplayComponent } from './posts-display/posts-display.component';
+
+import { MainListComponent } from './components/main-list/main-list.component';
+import { PostsDisplayComponent } from './post-comments/posts-display.component';
 
 const routes: Routes = [
-  { path: 'selector:id', component: PostsDisplayComponent },
+  { path: 'home', component: MainListComponent },
+  { path: 'posts', component: PostsDisplayComponent },
+  { path: 'posts/:idPost?', component: PostsDisplayComponent },
+
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
