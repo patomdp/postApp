@@ -7,34 +7,40 @@ import { PostsService } from 'src/app/services/posts.service';
   templateUrl: './main-list.component.html',
   styleUrls: ['./main-list.component.css'],
 })
+
 export class MainListComponent implements OnInit {
   public title = 'List of Posts';
   public posts: Array<Post> = [];
-  public isNewPostVisible: boolean = false;
 
+  public isNewPostVisible: boolean = false;
   public descriptionValue: string = '';
   public labelValue: string = '';
 
-  //public postsAPI: Array<any> = [];
+public page: number = 1;
+public pageSize: number = 10;
+
+
+  // public postsAPI: Array<any> = [];
 
   // injects PostsService
   constructor(private postsService: PostsService) {}
 
   ngOnInit(): void {
-    //subscribes to getPosts from the service
+    // subscribes to .getPosts() method from the service
     this.postsService.getPosts().subscribe((resp: any) => {
       console.log('Get post response: ', resp);
-      this.posts = resp;
+      this.posts = resp; // asign the response to the array posts
     });
   }
 
-  toggleShowPost() {
+  // method to toggle visibility of the component create or edit
+  toggleShowPost(): void {
     this.isNewPostVisible = !this.isNewPostVisible;
   }
 
-  addPost() {
-    //InputDescription
-    //InputTitle
+  addPost(): void {
+    // InputDescription
+    // InputTitle
 
     this.posts.push({
       userId: 1,
