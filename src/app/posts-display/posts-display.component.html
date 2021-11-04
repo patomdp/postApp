@@ -1,0 +1,57 @@
+<div class="container mt-3">
+
+  <div class="card">
+    <div class="card-body">
+
+      <div class="card-title h2 mb-3">{{title}}</div>
+
+      <div class="card-body"> Comment body - This is a wider card with supporting text below as a natural lead-in to
+        additional content. This content is a little bit
+        longer.</div>
+
+      <div class="card-body">
+        <h3 class="h3"> ⭐
+          <b>
+            Related Comments
+          </b>
+        </h3>
+
+        <div *ngFor="let comment of comments"
+          class="card mb-3 mw-100 list-group-item list-group-item-action border-top rounded">
+          <div class="row g-0">
+            <div class="col-md-1 d-flex align-items-center justify-content-center flex-direction-column">
+              <span id="image_user" style="height: 3em; width: 3em; background-color: grey;"
+                class="rounded-circle mt-2 ms-2"></span>
+            </div>
+            <div class="col-md-10 ms-0">
+              <div class="card-body" style="user-select: none; cursor: pointer;">
+                <h5 class="card-title"><b> {{comment.name}} </b> - {{comment.email}}</h5>
+                <p class="card-text"> {{comment.body}} </p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END FOR -->
+        <hr class="mb-3 mt-3">
+        <div class="form-group">
+          <div class="input-group mb-0">
+            <input [(ngModel)]="input_value" id="input_value" class="form-control" placeholder="Your comment">
+            <button class="btn btn-secondary" (click)="addComment()">
+              Add new comment
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+</div>

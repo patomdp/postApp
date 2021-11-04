@@ -5,17 +5,18 @@
       <span class="card-body h4 mb-0">
         {{title}}
       </span>
-      <button class="btn btn-secondary me-2" [disabled] >
+      < <button class="btn btn-secondary me-2" [disabled]>
         <i class="bi bi-pencil me-2"></i>
         Edit
-      </button>
-      <button class="btn btn-primary" (click)="toggleShowPost()" href="#post-section">
-        <i class="bi bi-plus-square me-2"></i>
-        New Post
-      </button>
+        </button>
+        <button class="btn btn-primary" (click)="toggleShowPost()" href="#post-section">
+          <i class="bi bi-plus-square me-2"></i>
+          New Post
+        </button>
     </div>
     <div class="container">
-      <ul *ngFor="let post of posts | slice: (page-1) * pageSize : page * pageSize" class="list-group d-flex align-self-center mb-2">
+      <ul *ngFor="let post of posts | slice: (page-1) * pageSize : page * pageSize"
+        class="list-group d-flex align-self-center mb-2">
 
         <li class="list-group-item list-group-item-action" style="user-select: none; cursor: pointer;">
           <!-- <i class="bi bi-sticky me-2"></i> ; let i = index -->
@@ -30,8 +31,8 @@
         </li>
       </ul>
       <div id="pagination-container" class="d-flex justify-content-center mt-3">
-        
-        <ngb-pagination  [(page)]="page" [pageSize]="pageSize" [collectionSize]="posts.length"></ngb-pagination>
+
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="posts.length"></ngb-pagination>
       </div>
     </div>
 
