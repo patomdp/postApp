@@ -12,17 +12,28 @@ export class PostsService {
     console.log('Post Service successfully inyected');
   }
 
-  // get some posts, filtered where the userId = 1
+  // get all posts
   public getPosts(): Observable<any> {
     const header = new HttpHeaders().set('Type-content', 'aplication/json');
     return this.http.get(this._url + 'posts', { headers: header });
   }
-  // get nested comments, just an example
+  // TODO: get one posts filtered by postId
+  public getOnePost(postID: any): Observable<any> {
+    const header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.get(this._url + 'posts/' + postID, { headers: header });
+  }
+  // get nested comments in posts 1 as an example
   public getComments(): Observable<any> {
     const header = new HttpHeaders().set('Type-content', 'aplication/json');
     return this.http.get(this._url + 'posts/1/comments/', { headers: header });
   }
-
+  // TODO: get nested comments in posts 1 as an example
+  public getCommentsById(createdModel: any): Observable<any> {
+    const header = new HttpHeaders().set('Type-content', 'aplication/json');
+    return this.http.get(this._url + 'posts/1?comments=' + createdModel.id, {
+      headers: header,
+    });
+  }
 }
 
 // https://jsonplaceholder.typicode.com/comments

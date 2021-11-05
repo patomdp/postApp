@@ -8,12 +8,15 @@ import { Post } from 'src/app/models/post';
   styleUrls: ['./add-edit-post.component.css'],
 })
 export class AddEditPostComponent implements OnInit {
-  @Output() model = new EventEmitter<Post>();
+  // this is the new object created in the component, the output method will send it to the parent component.
+  @Output() createdModel = new EventEmitter<Post>();
 
+  title: string = 'New Post';
   addEditForm: FormGroup;
   descriptionValue = '';
   labelValue = '';
-  //  model: Post = { title: '', body: '' };
+
+  postModel: Post = { title: '', body: '' };
 
   constructor() {
     this.addEditForm = new FormGroup({
@@ -24,12 +27,25 @@ export class AddEditPostComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(post: Post): void {
+  onSubmit() {
+    // saving the created object
+    console.log('ON SUBMIT: --', this.addEditForm.valid);
+    if (this.addEditForm.valid) {
+      const POSTMODEL = {
+        title: this.labelValue,
+        body: this.descriptionValue,
+        id: 1,
+      };
+      // emmiting the created object
+      this.createdModel.emit(POSTMODEL);
+      // TODO: pasar this.postModel con un .unshift() al lugar donde se almacena el array.
+    }
+  }
+  formCheck(): void {
     // preventDefault();
-    console.log('Event: ', event);
-    this.model.emit({ title: this.labelValue, body: this.descriptionValue });
-    console.log(this.model);
 
-    // TODO: pasar this.model con un .unshift() al lugar donde se almacena el array.
+    this.postModel = { title: this.labelValue, body: this.descriptionValue };
+
+    console.log('POST MODEL PRINT: ', this.postModel);
   }
 }

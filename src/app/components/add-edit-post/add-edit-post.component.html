@@ -3,13 +3,12 @@
   <div id="post-section" class="card mb-3">
     <div class="card-body h4 mb-0 d-flex align-self-center">
       <!-- TODO: Poner un titulo representativo -->
-
-      TITULO AGREGAR POST
+      {{title}}
     </div>
 
     <div class="card-body">
-      <form (ngSubmit)="onSubmit(addEditForm.value)" #addEditForm="ngForm">
-        <!-- TODO: Agregar el form binding aca -->
+      <form (ngSubmit)="onSubmit()" #addEditForm="ngForm" name="addEditForm">
+        <!-- TODO: Agregar el form binding aca (ngSubmit)="onSubmit(addEditForm)" -->
         <div class="form-group">
 
           <label for="InputTitle">Title
@@ -25,9 +24,6 @@
         </div>
 
         <div class="btn-container d-flex justify-content-between">
-
-
-
           <button (click)="addEditForm.reset()" class="btn btn-secondary">
             <!-- [routerLink]="['/home']" routerLinkActive="active" -->
             <i class="bi bi-x-square me-2"></i>

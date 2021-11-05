@@ -9,14 +9,15 @@ import { Comment } from '../models/comment';
 })
 export class PostsDisplayComponent implements OnInit {
   // TODO: tiene que recibir por @input el TITLE del post que se esta recibiendo y almacenarlo en la variable title
-  @Input() postTitle = '';
-  @Input() postBody = '';
+  @Input() postTitle: string = '';
+  @Input() postBody: string = '';
 
   public title = this.postTitle || 'Selected post with Related comments Page';
   public body =
     this.postBody ||
     'Comment body - This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.';
-  public input_value: string = '';
+
+  public comment_input: string;
 
   //inits empty array to store the comments
   public comments: Comment[] = [];
@@ -28,18 +29,21 @@ export class PostsDisplayComponent implements OnInit {
       //store all the comments in the comments array
       this.comments = resp;
     });
+
+    // comment input starts empty
+    this.comment_input = '';
   }
 
   ngOnInit(): void {}
 
   // method to add new comments to the post.
   addComment() {
-    console.log('INPUT VALUE: ', this.input_value);
+    console.log('INPUT VALUE: ', this.comment_input);
     this.comments.push({
       postId: 1,
-      name: 'TITULO DE PRUEBA',
-      email: 'pablorago@gmail.com',
-      body: this.input_value,
+      name: 'TEST TITLE',
+      email: 'TESTEMAIL@gmail.com',
+      body: this.comment_input,
     });
   }
 }

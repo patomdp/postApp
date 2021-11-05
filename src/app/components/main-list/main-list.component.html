@@ -9,9 +9,11 @@
       <button id="EditPost" class="btn btn-secondary me-2" [disabled]>
         <i class="bi bi-pencil"></i>
       </button>
-      <a id="NewPost" [routerLink]="['addEdit']" routerLinkActive="active" class="btn btn-primary">
+      <a id="NewPost" [routerLink]="['/addEdit']" routerLinkActive="active" class="btn btn-primary">
         <!-- (click)="toggleShowPost()" -->
         <i class="bi bi-plus-lg"></i>
+      </a>
+      <i class="bi bi-plus-lg"></i>
       </a>
 
     </div>
@@ -21,7 +23,6 @@
 
         <li class="list-group-item list-group-item-action" style="user-select: none; cursor: pointer;">
           <!-- <i class="bi bi-sticky me-2"></i> ; let i = index -->
-
 
           <div class="h6">
             {{post.title}} -

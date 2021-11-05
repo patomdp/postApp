@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from './models/post';
+import { PostsService } from './services/posts.service';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor() {}
+  constructor(private _postsService: PostsService) {}
 
   ngOnInit(): void {}
+
+  newPost(post: any) {
+    console.log('PARENT COMPONENT');
+    console.log('POST RECIBIDO: ', post);
+    // TODO: ahora tiene que hacer un push al array
+    this._postsService.getOnePost(post.id).subscribe((data) => {
+      console.log(data);
+    });
+  }
 }

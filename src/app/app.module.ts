@@ -12,6 +12,7 @@ import { MainListComponent } from './components/main-list/main-list.component';
 import { AddEditPostComponent } from './components/add-edit-post/add-edit-post.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MainListComponent,
     AddEditPostComponent,
     NavbarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
