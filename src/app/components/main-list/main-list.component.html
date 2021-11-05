@@ -29,49 +29,12 @@
           </p>
         </li>
       </ul>
-      <div id="pagination-container" class=" d-flex justify-content-center mt-3 container-fluid">
 
+      <div id="pagination-container" class=" d-flex justify-content-center mt-3 container-fluid">
         <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="posts.length/2" size="sm">
         </ngb-pagination>
       </div>
+
     </div>
-
-
-
   </div>
-
-  <!-- <div id="post-section" *ngIf="isNewPostVisible" class="card mb-3">
-    <div class="card-body h4 mb-0">
-      TITULO AGREGAR POST
-    </div>
-
-    <div class="card-body">
-      <form>
-        <div class="form-group">
-          <label for="InputTitle">Title</label>
-          <input [(ngModel)]="labelValue" id="labelValue" name="labelValue" type="text" class="form-control mb-2"
-            placeholder="Post title">
-
-          <label for="InputDescription">Description</label>
-          <textarea [(ngModel)]="descriptionValue" id="descriptionValue" name="descriptionValue" class="form-control"
-            rows="3" placeholder="Post description"></textarea>
-        </div>
-
-
-        <button type="submit" class="btn btn-secondary mt-3 me-2" (click)="isNewPostVisible=false">
-          <i class="bi bi-x-square me-2">
-          </i>
-          Cancel
-        </button>
-        <button type="submit" class="btn btn-primary mt-3" (click)="addPost(); isNewPostVisible=false">
-          <i class="bi bi-pencil me-2"></i>
-          Create Post
-        </button>
-
-      </form>
-
-    </div>
-  </div> -->
-
-
 </div>
