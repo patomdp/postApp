@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddEditPostComponent } from './components/add-edit-post/add-edit-post.component';
 
 import { MainListComponent } from './components/main-list/main-list.component';
-import { PostsDisplayComponent } from './penosts-display/posts-display.component';
+import { PostsDisplayComponent } from './posts-display/posts-display.component';
 
 const routes: Routes = [
   { path: 'home', component: MainListComponent },

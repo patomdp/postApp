@@ -6,9 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'PostApp';
-  public commentId: number | undefined;
-
   constructor() {}
 
   ngOnInit(): void {}

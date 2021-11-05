@@ -24,11 +24,12 @@ export class AddEditPostComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(event: any): void {
-    event.preventDefault();
+  onSubmit(post: Post): void {
+    // preventDefault();
     console.log('Event: ', event);
     this.model.emit({ title: this.labelValue, body: this.descriptionValue });
     console.log(this.model);
+
     // TODO: pasar this.model con un .unshift() al lugar donde se almacena el array.
   }
 }
