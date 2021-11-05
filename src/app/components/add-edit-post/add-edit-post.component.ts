@@ -29,17 +29,17 @@ export class AddEditPostComponent implements OnInit {
 
   onSubmit() {
     // saving the created object
-    console.log('ON SUBMIT: --', this.addEditForm.valid);
-    if (this.addEditForm.valid) {
-      const POSTMODEL = {
-        title: this.labelValue,
-        body: this.descriptionValue,
-        id: 1,
-      };
-      // emmiting the created object
-      this.createdModel.emit(POSTMODEL);
-      // TODO: pasar this.postModel con un .unshift() al lugar donde se almacena el array.
-    }
+
+    const POSTMODEL = {
+      title: this.labelValue,
+      body: this.descriptionValue,
+      id: 1,
+    };
+    console.log('ON SUBMIT: ', this.addEditForm);
+    console.log('POSTMODEL: ', POSTMODEL);
+    // emmiting the created object
+    this.createdModel.emit(POSTMODEL);
+    // TODO: pasar this.postModel con un .unshift() al lugar donde se almacena el array.
   }
   formCheck(): void {
     // preventDefault();
