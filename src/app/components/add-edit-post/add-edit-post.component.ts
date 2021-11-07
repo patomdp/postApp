@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-add-edit-post',
@@ -19,7 +20,7 @@ export class AddEditPostComponent implements OnInit {
 
   postModel: Post = { title: '', body: '' };
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public storeService: StoreService) {
     this.addEditForm = new FormGroup({
       descriptionValue: new FormControl(this.descriptionValue),
       labelValue: new FormControl(this.labelValue),
@@ -38,16 +39,12 @@ export class AddEditPostComponent implements OnInit {
     console.log('ON SUBMIT: ', this.addEditForm);
     console.log('POSTMODEL: ', POSTMODEL);
     // emmiting the created object
-    this.createdModel.emit(POSTMODEL);
-    // TODO: pasar this.postModel con un .unshift() al lugar donde se almacena el array.
+
+    this.storeService.arrayPost.push(POSTMODEL);
+
+    console.log('STORE SERVICE CHECK_:', this.storeService.arrayPost);
+
     this.backToHome();
-  }
-  formCheck(): void {
-    // preventDefault();
-
-    this.postModel = { title: this.labelValue, body: this.descriptionValue };
-
-    console.log('POST MODEL PRINT: ', this.postModel);
   }
 
   // Method to navigate back to home

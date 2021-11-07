@@ -20,7 +20,8 @@
     <div class="container">
       <ul
         *ngFor="
-          let post of posts | slice: (page - 1) * pageSize:page * pageSize;
+          let post of storeService.arrayPost
+            | slice: (page - 1) * pageSize:page * pageSize;
           let id = index
         "
         class="list-group d-flex align-self-center mb-2"
@@ -35,7 +36,7 @@
           >
             <!-- (click)="onSelectPost(post)" -->
             <a
-              [routerLink]="['/posts/', id + 1]"
+              [routerLink]="['/posts/', storeService.arrayPost[id + 1]]"
               routerLinkActive="active"
               class="h6 m-0"
               style="text-transform: uppercase"
@@ -79,7 +80,7 @@
         <ngb-pagination
           [(page)]="page"
           [pageSize]="pageSize"
-          [collectionSize]="posts.length / 2"
+          [collectionSize]="storeService.arrayPost.length"
           size="sm"
         >
         </ngb-pagination>

@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { PostsDisplayComponent } from 'src/app/posts-display/posts-display.component';
 import { PostsService } from 'src/app/services/posts.service';
+import { StoreService } from 'src/app/services/store.service';
 
 // This component contains all the posts
 @Component({
@@ -19,53 +20,41 @@ import { PostsService } from 'src/app/services/posts.service';
   styleUrls: ['./main-list.component.css'],
 })
 export class MainListComponent implements OnInit {
-  //  @Input() registerNewPost = '';
-  @ViewChild(PostsDisplayComponent) child: any;
-  @Input() createdModel = new EventEmitter<Post>();
-
   public title = 'List of Posts';
-  public posts: Array<Post> = [];
 
   public descriptionValue: string = '';
   public labelValue: string = '';
 
   // to control the pagination
   public page: number = 1;
-  public pageSize: number = 5;
+  public pageSize: number = 10;
 
   // injects PostsService and router
-  constructor(private postsService: PostsService, private router: Router) {}
+  constructor(
+    private postsService: PostsService,
+    public storeService: StoreService
+  ) {}
 
   ngOnInit(): void {
     // subscribes to .getPosts() method from the service and get all the posts from the API
-    this.postsService.getPosts().subscribe((resp: any) => {
-      this.posts = resp; // asign the response to the array posts
-    });
-    if (this.createdModel) {
-      let model = this.createdModel;
-      this.addNewPost();
+    if (this.storeService.arrayPost.length === 0) {
+      this.postsService.getPosts().subscribe((resp: any) => {
+        this.storeService.arrayPost = resp; // asign the response to the array posts
+      });
     }
   }
 
   addPost(): void {
-    this.posts.push({
-      id: this.posts.length + 1, // provisional Post ID
+    this.storeService.arrayPost.push({
+      id: this.storeService.arrayPost.length + 1, // provisional Post ID
       title: this.labelValue,
       body: this.descriptionValue,
     });
   }
 
-  addNewPost(): void {
-    this.posts.push({
-      id: this.posts.length + 1, // provisional Post ID
-      title: this.createdModel.name as string,
-      body: ' this.createdModel',
-    });
-  }
-
   deletePost(PostId: number): void {
     // remove selected element
-    this.posts.splice(PostId, 1);
+    this.storeService.arrayPost.splice(PostId, 1);
   }
 
   toggleEdit(id: any) {
