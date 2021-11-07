@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 // Components
 import { Post } from 'src/app/models/post';
@@ -32,7 +32,7 @@ export class MainListComponent implements OnInit {
   ngOnInit(): void {
     // subscribes to .getPosts() method from the service and get all the posts from the API
     this.postsService.getPosts().subscribe((resp: any) => {
-      console.log('Get post response: ', resp);
+      // console.log('Get post response: ', resp);
       this.posts = resp; // asign the response to the array posts
     });
   }
@@ -45,23 +45,20 @@ export class MainListComponent implements OnInit {
     });
   }
 
-  // Method to navigate to the selected post page and open the comments
-  onSelectPost(post: Post): void {
-    this.router.navigate(['/posts/', { idPost: post.id }]);
-    console.log('POST ID: /posts/' + post.id);
-  }
+  // // Method to navigate to the selected post page and open the comments
+  // onSelectPost(post: Post): void {
+  //   this.router.navigate(['/posts/', { idPost: post.id }]);
+  //   console.log('POST ID: /posts/' + post.id);
+  //   // TODO: este metodo tiene que mandar el objeto Post al componente posts-display
+  // }
 
   deletePost(PostId: number): void {
     // remove selected element
-    this.posts.splice(PostId, 1); // remove last element
-    // console.log('DELETED POST INDEX: ', PostId);
+    this.posts.splice(PostId, 1);
   }
 
   toggleEdit(id: any) {
     const element: any = document.getElementById('post-body-' + id);
-    // console.log('POST BODY: ', element);
-    // console.log('POST EDITABLE: ', element.contentEditable);
-
     element.contentEditable = 'true';
     element.focus();
   }

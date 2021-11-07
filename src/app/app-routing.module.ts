@@ -10,7 +10,7 @@ import { AddEditPostComponent } from './components/add-edit-post/add-edit-post.c
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'posts', component: PostsDisplayComponent },
-  { path: 'posts/:idPost', component: PostsDisplayComponent },
+  { path: 'posts/:id', component: PostsDisplayComponent },
   { path: 'addEdit', component: AddEditPostComponent },
 
   // {

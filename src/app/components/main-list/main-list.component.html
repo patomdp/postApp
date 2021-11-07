@@ -21,7 +21,7 @@
       <ul
         *ngFor="
           let post of posts | slice: (page - 1) * pageSize:page * pageSize;
-          let i = index
+          let id = index
         "
         class="list-group d-flex align-self-center mb-2"
       >
@@ -33,9 +33,11 @@
             id="headcontainer"
             class="d-flex justify-content-between align-items-center mb-2"
           >
+            <!-- (click)="onSelectPost(post)" -->
             <a
+              [routerLink]="['/posts/', id + 1]"
+              routerLinkActive="active"
               class="h6 m-0"
-              (click)="onSelectPost(post)"
               style="text-transform: uppercase"
             >
               {{ post.title }}
@@ -46,21 +48,21 @@
               <button
                 id="EditBtn"
                 class="btn btn-secondary btn-sm me-2"
-                (click)="toggleEdit(i)"
+                (click)="toggleEdit(id)"
               >
                 <i class="bi bi-pencil"></i>
               </button>
               <button
                 id="deleteBtn"
                 class="btn btn-warning btn-sm"
-                (click)="deletePost(i)"
+                (click)="deletePost(id)"
               >
                 <i class="bi bi-trash"></i>
               </button>
             </div>
           </div>
           <p
-            id="post-body-{{ i }}"
+            id="post-body-{{ id }}"
             contentEditable="false"
             class="card-text"
             spellcheck="false"

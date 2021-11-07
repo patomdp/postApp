@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+// Model
 import { Post } from '../models/post';
 
 @Injectable({
@@ -29,10 +31,10 @@ export class PostsService {
     return this.http.get(this._url + 'posts/1/comments/', { headers: header });
   }
   // TODO: get nested comments in posts 1 as an example
-  public getCommentsById(receivedPost: Post): Observable<any> {
-    console.log('POST RECIBIDO EN GET COMMENTS: ', receivedPost.id);
+  public getCommentsById(receivedPost: any): Observable<any> {
+    console.log('POST RECIBIDO EN GET COMMENTS: ', receivedPost);
     const header = new HttpHeaders().set('Type-content', 'aplication/json');
-    return this.http.get(this._url + 'comments?postId=' + receivedPost.id, {
+    return this.http.get(this._url + 'comments?postId=' + receivedPost, {
       headers: header,
     });
   }

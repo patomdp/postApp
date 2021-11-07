@@ -1,14 +1,16 @@
 <div class="container mt-3 mb-3">
   <div class="card" style="min-width: 350px">
     <div class="card-body">
-      <div class="card-title h2 mb-3 d-flex justify-content-center">
+      <div
+        class="card-title h2 mb-3 d-flex justify-content-center text-uppercase"
+      >
         <!-- TODO: ESTE TITLE tiene que mostrar el {{post.title}} -->
-        {{ title }}
+        {{ receivedPost.title }}
       </div>
 
-      <div class="card-body">
+      <div class="card-body text-capitalize">
         <!-- TODO: ESTE BODY tiene que mostrar el {{post.body}} -->
-        {{ body }}
+        {{ receivedPost.body }}
       </div>
 
       <div class="card-body">
@@ -79,7 +81,7 @@
                 >
                   <h5 class="card-title">
                     <span class="badge badge-primary">{{ comment.id }}</span
-                    ><b style="text-transform: uppercase">
+                    ><b class="text-uppercase">
                       {{ comment.name }}
                     </b>
                     - {{ comment.email }}
