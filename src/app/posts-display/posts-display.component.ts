@@ -12,21 +12,7 @@ import { Post } from '../models/post';
   styleUrls: ['./posts-display.component.css'],
 })
 export class PostsDisplayComponent implements OnInit {
-  // TODO: tiene que recibir por @input el TITLE, POSTID, BODY del post para poder usarlo
-  // @Input() postTitle: string = '';
-  // @Input() postBody: string = '';
-  // @Input() receivedPost: Post = new Post();
-
-  // Ese post que se recibe se pasa como parametro al constructor para recibir la pagina adecuada
-
   public receivedPost: Post = new Post();
-
-  // // this.receivedPost.title ||
-  // public body: string =
-  //   'Comment body - This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.';
-  // // this.receivedPost.body ||
-  // public postId = this.receivedPost.id;
-  // // || '1'
 
   public comment_input: string;
 
@@ -69,7 +55,7 @@ export class PostsDisplayComponent implements OnInit {
   addComment(): void {
     console.log('INPUT VALUE: ', this.comment_input);
     this.comments.push({
-      postId: 1, // TODO: tiene que ser igual al ID del post que llega
+      postId: this.receivedPost.userId, // TODO: tiene que ser igual al ID del post que llega
       id: this.comments.length + 1,
       name: 'TEST TITLE',
       email: 'TESTEMAIL@gmail.com',
@@ -83,10 +69,6 @@ export class PostsDisplayComponent implements OnInit {
     this.comments.splice(commentId, 1);
     console.log('DELETE COMMENT ID: ', commentId);
   }
-
-  // editComment(i: number): void {
-  //   this.comments[i].body = 'FUHSUFHUSHFHSH';
-  // }
 
   toggleEdit(id: any) {
     const element: any = document.getElementById('content-body-' + id);
