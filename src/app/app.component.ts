@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  newPost(post: any) {
+  newPost(post: any): void {
     console.log('PARENT COMPONENT');
     console.log('POST RECIBIDO: ', post);
     // TODO: ahora tiene que hacer un push al array

@@ -1,14 +1,20 @@
-<nav class="navbar sticky-top navbar-light bg-dark ">
+<nav class="navbar sticky-top navbar-light bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center " routerLink="/home" routerLinkActive="active">
-      <img src="https://www.rindus.de/hubfs/raw_assets/public/RindusThemeV2/images/logo.png" alt="" width="30"
-        height="30" class="d-inline-block me-2 align-text-top">
-      <span class="h2 mb-0" style="color: white;">
-        {{title}}
+    <a
+      class="navbar-brand d-flex align-items-center"
+      routerLink="/home"
+      routerLinkActive="active"
+    >
+      <img
+        src="https://www.rindus.de/hubfs/raw_assets/public/RindusThemeV2/images/logo.png"
+        alt=""
+        width="30"
+        height="30"
+        class="d-inline-block me-2 align-text-top"
+      />
+      <span class="h2 mb-0" style="color: white">
+        {{ title }}
       </span>
     </a>
-    <a [routerLink]="['posts']" routerLinkActive="active" class="btn btn-secondary">COMMENTS COMPONENT</a>
-    <a [routerLink]="['addEdit']" routerLinkActive="active" class="btn btn-primary">ADD/EDIT COMPONENT</a>
-    <input [(ngModel)]="commentId">
   </div>
 </nav>

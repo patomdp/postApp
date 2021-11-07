@@ -1,44 +1,57 @@
 <div class="container">
-
   <div id="post-section" class="card mb-3">
     <div class="card-body h4 mb-0 d-flex align-self-center">
-      <!-- TODO: Poner un titulo representativo -->
-      {{title}}
+      {{ title }}
     </div>
 
     <div class="card-body">
       <form (ngSubmit)="onSubmit()" #addEditForm="ngForm" name="addEditForm">
-        <!-- TODO: Agregar el form binding aca (ngSubmit)="onSubmit(addEditForm)" -->
         <div class="form-group">
+          <label for="InputTitle">Title </label>
+          <input
+            required
+            [(ngModel)]="labelValue"
+            name="labelValue"
+            id="labelValue"
+            type="text"
+            class="form-control mb-2"
+            placeholder="Post title"
+          />
 
-          <label for="InputTitle">Title
-          </label>
-          <input required [(ngModel)]="labelValue" name="labelValue" id="labelValue" type="text"
-            class="form-control mb-2" placeholder="Post title">
-
-          <label for="InputDescription">Description
-          </label>
-          <textarea required [(ngModel)]="descriptionValue" name="descriptionValue" id="descriptionValue"
-            class="form-control" rows="3" placeholder="Post description"></textarea>
-
+          <label for="InputDescription">Description </label>
+          <textarea
+            required
+            [(ngModel)]="descriptionValue"
+            name="descriptionValue"
+            id="descriptionValue"
+            class="form-control"
+            rows="3"
+            placeholder="Post description"
+          ></textarea>
         </div>
 
         <div class="btn-container d-flex justify-content-between">
-          <button (click)="addEditForm.reset()" class="btn btn-secondary">
-            <!-- [routerLink]="['/home']" routerLinkActive="active" -->
+          <a
+            [routerLink]="['/home']"
+            routerLinkActive="active"
+            (click)="addEditForm.reset()"
+            class="btn btn-secondary"
+          >
             <i class="bi bi-x-square me-2"></i>
             Cancel
-          </button>
-          <button type="submit" [disabled]="!addEditForm.form.valid" class="btn btn-primary">
+          </a>
+
+          <button
+            type="submit"
+            [disabled]="!addEditForm.form.valid"
+            class="btn btn-primary"
+          >
             <!-- [routerLink]="['/home']" routerLinkActive="active" -->
             <i class="bi bi-pencil me-2"></i>
             Create Post
           </button>
         </div>
       </form>
-
     </div>
   </div>
-
-
 </div>

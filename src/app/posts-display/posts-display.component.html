@@ -1,74 +1,122 @@
 <div class="container mt-3 mb-3">
-
-  <div class="card" style="min-width: 350px;">
+  <div class="card" style="min-width: 350px">
     <div class="card-body">
-
-      <div class="card-title h2 mb-3 d-flex justify-content-center">{{title}}</div>
-
-      <!-- TODO: ESTE TITLE tiene que mostrar el {{post.title}} -->
-
-      <div class="card-body">
-        <!-- TODO: ESTE BODY tiene que mostrar el {{post.body}} -->
-        {{body}}
-
+      <div class="card-title h2 mb-3 d-flex justify-content-center">
+        <!-- TODO: ESTE TITLE tiene que mostrar el {{post.title}} -->
+        {{ title }}
       </div>
 
       <div class="card-body">
-        <h3 class="h3"> 💬
-          <b>
-            Related Comments
-          </b>
+        <!-- TODO: ESTE BODY tiene que mostrar el {{post.body}} -->
+        {{ body }}
+      </div>
+
+      <div class="card-body">
+        <h3 class="h3">
+          💬
+          <b> Related Comments </b>
         </h3>
 
-        <div *ngFor="let comment of comments; let i = index"
-          class="card mb-3 mw-100 list-group-item list-group-item-action border-top rounded">
-
-          <!-- TODO:  Cuando se clickee en este row se muestra el boton de editar o borrar -->
-          <div id="button-container-{{i}}" class="d-flex justify-content-end">
-            <button class="btn btn-primary ms-2"><i class="bi bi-pencil"></i></button>
-            <button class="btn btn-primary ms-2"><i class="bi bi-trash"></i></button>
+        <div
+          *ngFor="let comment of comments; let i = index"
+          class="
+            card
+            mb-3
+            mw-100
+            list-group-item list-group-item-action
+            border-top
+            rounded
+          "
+        >
+          <div id="button-container-{{ i }}" class="d-flex justify-content-end">
+            <button
+              (click)="toggleEdit(i)"
+              class="btn btn-secondary ms-2 btn-sm"
+            >
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button
+              (click)="deleteComment(i)"
+              class="btn btn-warning btn-sm ms-2"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
           </div>
 
-          <div class="row g-0 d-flex  justify-content-around">
-            <div class="col-md-1 d-flex align-items-center justify-content-center flex-direction-column pe-0">
-              <span id="image_user"
-                style="height: 40px !important; width: 40px !important; background-color: rgb(202, 202, 202);"
-                class="rounded-circle"></span>
+          <div class="row g-0 d-flex justify-content-around">
+            <div
+              class="
+                col-md-1
+                d-flex
+                align-items-center
+                justify-content-center
+                flex-direction-column
+                pe-0
+              "
+            >
+              <!-- FAKE USER IMAGE -->
+              <img
+                src="https://picsum.photos/id/100{{ i }}/40/40.webp"
+                alt=""
+                id="image_user"
+                style="
+                  height: 40px !important;
+                  width: 40px !important;
+                  background-color: rgb(202, 202, 202);
+                "
+                class="rounded-circle"
+              />
             </div>
             <div class="col-md-10 ms-0 ps-0">
-              <!-- TODO: ACA VAN LOS COMENTARIOS PERO DEL POST QUE LLEGA POR PARAMETROS -->
-              <div class="card-body" style="user-select: none; cursor: pointer;">
-                <div id="comment-head-container" class="d-flex justify-content-between">
-
-                  <h5 class="card-title"><b> {{comment.name}} </b> - {{comment.email}}</h5>
-
+              <div
+                id="post-container-{{ i }}"
+                class="card-body"
+                style="user-select: none; cursor: pointer"
+              >
+                <div
+                  id="comment-head-container"
+                  class="d-flex justify-content-between"
+                >
+                  <h5 class="card-title">
+                    <span class="badge badge-primary">{{ comment.id }}</span
+                    ><b style="text-transform: uppercase">
+                      {{ comment.name }}
+                    </b>
+                    - {{ comment.email }}
+                  </h5>
                 </div>
 
-                <p class="card-text"> {{comment.body}} </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <p
+                  id="content-body-{{ i }}"
+                  contentEditable="false"
+                  class="card-text"
+                  spellcheck="false"
+                >
+                  {{ comment.body }}
+                </p>
+                <p class="card-text">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </p>
               </div>
-
             </div>
           </div>
         </div>
         <!-- END FOR -->
-        <hr class="mb-3 mt-3">
+        <hr class="mb-3 mt-3" />
         <div class="form-group">
           <div class="input-group mb-0">
-            <input [(ngModel)]="comment_input" id="comment_input" class="form-control" placeholder="Your comment">
+            <input
+              [(ngModel)]="comment_input"
+              id="comment_input"
+              class="form-control"
+              placeholder="Your comment"
+            />
             <button class="btn btn-secondary" (click)="addComment()">
               Add new comment
             </button>
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
-
-
-
-
-
 </div>

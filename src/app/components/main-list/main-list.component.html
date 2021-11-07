@@ -1,40 +1,87 @@
-<div class="container mt-5 " style="min-width: 350px;">
-
+<div class="container mt-5" style="min-width: 350px">
   <div class="card mb-3">
-    <!-- *ngIf="!isNewPostVisible" -->
-    <div id="card-title" class="card-body d-flex justify-content-between align-items-center" style="height: 5em;">
+    <div
+      id="card-title"
+      class="card-body d-flex justify-content-between align-items-center"
+      style="height: 5em"
+    >
       <span class="card-body h4 mb-0 ps-0">
-        {{title}}
+        {{ title }}
       </span>
-      <button id="EditPost" class="btn btn-secondary me-2" [disabled]>
-        <i class="bi bi-pencil"></i>
-      </button>
-      <a id="NewPost" [routerLink]="['/addEdit']" routerLinkActive="active" class="btn btn-primary">
-        <!-- (click)="toggleShowPost()" -->
-        <i class="bi bi-plus-lg"></i>
+      <a
+        id="NewPost"
+        [routerLink]="['/addEdit']"
+        routerLinkActive="active"
+        class="btn btn-primary"
+      >
+        <i class="bi bi-plus-lg">NEW POST</i>
       </a>
     </div>
     <div class="container">
-      <ul *ngFor="let post of posts | slice: (page-1) * pageSize : page * pageSize"
-        class="list-group d-flex align-self-center mb-2">
+      <ul
+        *ngFor="
+          let post of posts | slice: (page - 1) * pageSize:page * pageSize;
+          let i = index
+        "
+        class="list-group d-flex align-self-center mb-2"
+      >
+        <li
+          class="list-group-item list-group-item-action"
+          style="user-select: none; cursor: pointer"
+        >
+          <div
+            id="headcontainer"
+            class="d-flex justify-content-between align-items-center mb-2"
+          >
+            <a
+              class="h6 m-0"
+              (click)="onSelectPost(post)"
+              style="text-transform: uppercase"
+            >
+              {{ post.title }}
 
-        <li class="list-group-item list-group-item-action" style="user-select: none; cursor: pointer;">
-          <!-- <i class="bi bi-sticky me-2"></i> ; let i = index -->
-
-          <div class="h6">
-            {{post.title}} -
+              -
+            </a>
+            <div id="btn-container me-2">
+              <button
+                id="EditBtn"
+                class="btn btn-secondary btn-sm me-2"
+                (click)="toggleEdit(i)"
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button
+                id="deleteBtn"
+                class="btn btn-warning btn-sm"
+                (click)="deletePost(i)"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
           </div>
-          <p>
-            {{post.body}}
+          <p
+            id="post-body-{{ i }}"
+            contentEditable="false"
+            class="card-text"
+            spellcheck="false"
+          >
+            {{ post.body }}
           </p>
         </li>
       </ul>
 
-      <div id="pagination-container" class=" d-flex justify-content-center mt-3 container-fluid">
-        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="posts.length/2" size="sm">
+      <div
+        id="pagination-container"
+        class="d-flex justify-content-center mt-3 container-fluid"
+      >
+        <ngb-pagination
+          [(page)]="page"
+          [pageSize]="pageSize"
+          [collectionSize]="posts.length / 2"
+          size="sm"
+        >
         </ngb-pagination>
       </div>
-
     </div>
   </div>
 </div>
