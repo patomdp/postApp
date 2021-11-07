@@ -25,11 +25,7 @@ export class PostsService {
     const header = new HttpHeaders().set('Type-content', 'aplication/json');
     return this.http.get(this._url + 'posts/' + postID, { headers: header });
   }
-  // get nested comments in posts 1 as an example
-  public getComments(): Observable<any> {
-    const header = new HttpHeaders().set('Type-content', 'aplication/json');
-    return this.http.get(this._url + 'posts/1/comments/', { headers: header });
-  }
+
   // TODO: get nested comments in posts 1 as an example
   public getCommentsById(receivedPost: any): Observable<any> {
     console.log('POST RECIBIDO EN GET COMMENTS: ', receivedPost);

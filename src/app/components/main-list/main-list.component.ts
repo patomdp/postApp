@@ -44,14 +44,6 @@ export class MainListComponent implements OnInit {
     }
   }
 
-  addPost(): void {
-    this.storeService.arrayPost.push({
-      id: this.storeService.arrayPost.length + 1, // provisional Post ID
-      title: this.labelValue,
-      body: this.descriptionValue,
-    });
-  }
-
   deletePost(PostId: number): void {
     // remove selected element
     this.storeService.arrayPost.splice(PostId, 1);

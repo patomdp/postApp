@@ -22,7 +22,7 @@
         *ngFor="
           let post of storeService.arrayPost
             | slice: (page - 1) * pageSize:page * pageSize;
-          let id = index
+          let i = index
         "
         class="list-group d-flex align-self-center mb-2"
       >
@@ -36,7 +36,7 @@
           >
             <!-- (click)="onSelectPost(post)" -->
             <a
-              [routerLink]="['/posts/', storeService.arrayPost[id + 1]]"
+              [routerLink]="['/posts/', post.id]"
               routerLinkActive="active"
               class="h6 m-0"
               style="text-transform: uppercase"
@@ -49,21 +49,21 @@
               <button
                 id="EditBtn"
                 class="btn btn-secondary btn-sm me-2"
-                (click)="toggleEdit(id)"
+                (click)="toggleEdit(i)"
               >
                 <i class="bi bi-pencil"></i>
               </button>
               <button
                 id="deleteBtn"
                 class="btn btn-warning btn-sm"
-                (click)="deletePost(id)"
+                (click)="deletePost(i)"
               >
                 <i class="bi bi-trash"></i>
               </button>
             </div>
           </div>
           <p
-            id="post-body-{{ id }}"
+            id="post-body-{{ i }}"
             contentEditable="false"
             class="card-text"
             spellcheck="false"

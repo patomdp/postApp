@@ -34,7 +34,7 @@ export class AddEditPostComponent implements OnInit {
     const POSTMODEL = {
       title: this.labelValue,
       body: this.descriptionValue,
-      // TODO: id: que venga con el array.lenght ,
+      id: this.storeService.arrayPost.length + 1,
     };
     console.log('ON SUBMIT: ', this.addEditForm);
     console.log('POSTMODEL: ', POSTMODEL);
